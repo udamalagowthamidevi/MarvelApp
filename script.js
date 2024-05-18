@@ -16,7 +16,7 @@ let limitNum=24;
 let prevEle=document.getElementById("previous");
 let nextEle=document.getElementById("next");
 let favHeroList=[];
-
+//creates URL for the homePage data where it fetches around 24 records everytime by updating the offset and limit values
 function createURL() {
     const ts = Date.now();
     const params = new URLSearchParams({
@@ -55,6 +55,7 @@ async function fetchData(){
     })
 }
 fetchData();
+//creates the div element with Card CSS for each comic and adds them to the list
 function createCard(character,listsEle){
     let divEle=document.createElement("div");
     divEle.classList.add("card")
@@ -99,14 +100,17 @@ function createCard(character,listsEle){
     divEle.appendChild(learnMore);
     listsEle.appendChild(divEle);
 }
+//updates the offset and fetches the previous 24 records
 prevEle.addEventListener("click",function(){
     offsetNum=offsetNum-limitNum;
     fetchData();
 })
+//updates the offset and fetches the next 24 records
 nextEle.addEventListener("click",function(){
     offsetNum=offsetNum+limitNum;
     fetchData();
 })
+//navigates to the home page from any where in the website
 let goBack =document.getElementById("goBack");
 goBack.addEventListener("click",function(){
     listSection.style.display='block';
@@ -136,6 +140,7 @@ search_button.addEventListener("click",function(){
     })
     
 })
+//generates the URL for the Search field
 function createSearchURL() {
     const ts = Date.now();
     const params = new URLSearchParams({

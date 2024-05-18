@@ -16,6 +16,7 @@ favTab.addEventListener("click",function(){
     }
     
 })
+//generates the URL for each character with it's character ID
 function createFavUrl(id){
     const ts = Date.now();
     const params = new URLSearchParams({
@@ -67,6 +68,7 @@ function createfavCard(character,listsEle){
     divEle.appendChild(removeBtn);
     listsEle.appendChild(divEle);
 }
+//it removes the id of the character and updates the favTab page
 function updatePageOnRemove(){
     listsEle.innerHTML='';
     for(let id of favHeroList){
